@@ -1,0 +1,276 @@
+/* Main Container */
+.main-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    color: white;
+    margin: 0;
+}
+
+/* Instructions Styles */
+.instructions {
+    text-align: center;
+    margin-bottom: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.instructions h1 {
+    margin: 0 0 15px 0;
+    font-size: 24px;
+}
+
+.instructions p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.color-info {
+    font-size: 14px !important;
+}
+
+.key-highlight {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* D-pad Styles - Pixel Art Theme dengan Animasi */
+.d-pad-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    filter: drop-shadow(4px 4px 0px #000);
+}
+
+.d-pad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.d-pad-row {
+    display: flex;
+    align-items: center;
+}
+
+.d-pad-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 0;
+    background: linear-gradient(145deg, #4a4a4a, #2d2d2d);
+    color: #ffffff;
+    font-size: 24px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid;
+    border-color: #6a6a6a #1a1a1a #1a1a1a #6a6a6a;
+    margin: 2px;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    transition: all 0.1s ease;
+    position: relative;
+    box-shadow:
+        2px 2px 0px #000,
+        inset 1px 1px 0px rgba(255, 255, 255, 0.3),
+        inset -1px -1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.d-pad-button:hover {
+    background: linear-gradient(145deg, #5a5a5a, #3d3d3d);
+    border-color: #7a7a7a #2a2a2a #2a2a2a #7a7a7a;
+    transform: translate(-1px, -1px);
+    box-shadow:
+        3px 3px 0px #000,
+        inset 1px 1px 0px rgba(255, 255, 255, 0.4),
+        inset -1px -1px 0px rgba(0, 0, 0, 0.6);
+}
+
+/* Animasi Khusus untuk Setiap Arah dengan Efek Putih */
+.d-pad-button.up-pressed {
+    animation: upPress 0.3s ease;
+}
+
+.d-pad-button.down-pressed {
+    animation: downPress 0.3s ease;
+}
+
+.d-pad-button.left-pressed {
+    animation: leftPress 0.3s ease;
+}
+
+.d-pad-button.right-pressed {
+    animation: rightPress 0.3s ease;
+}
+
+/* Animasi Panah Atas - Hijau dengan Flash Putih */
+@keyframes upPress {
+    0% {
+        background: linear-gradient(145deg, #4a4a4a, #2d2d2d);
+        transform: scale(1);
+    }
+
+    15% {
+        background: linear-gradient(145deg, #ffffff, #f0f0f0);
+        color: #000000;
+        transform: scale(0.95);
+        box-shadow:
+            0px 0px 20px #ffffff,
+            2px 2px 0px #000,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.8);
+    }
+
+    50% {
+        background: linear-gradient(145deg, #00ff00, #00cc00);
+        color: #ffffff;
+        transform: scale(0.9) translateY(-4px);
+        box-shadow:
+            0px 4px 0px #000,
+            0px 0px 25px #00ff00,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.5);
+    }
+
+    100% {
+        background: linear-gradient(145deg, #4a4a4a, #2d2d2d);
+        color: #ffffff;
+        transform: scale(1);
+        box-shadow:
+            2px 2px 0px #000,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.3),
+            inset -1px -1px 0px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Animasi Panah Bawah - Merah dengan Flash Putih */
+@keyframes downPress {
+    0% {
+        background: linear-gradient(145deg, #4a4a4a, #2d2d2d);
+        transform: scale(1);
+    }
+
+    15% {
+        background: linear-gradient(145deg, #ffffff, #f0f0f0);
+        color: #000000;
+        transform: scale(0.95);
+        box-shadow:
+            0px 0px 20px #ffffff,
+            2px 2px 0px #000,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.8);
+    }
+
+    50% {
+        background: linear-gradient(145deg, #ff0000, #cc0000);
+        color: #ffffff;
+        transform: scale(0.9) translateY(4px);
+        box-shadow:
+            0px -4px 0px #000,
+            0px 0px 25px #ff0000,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.5);
+    }
+
+    100% {
+        background: linear-gradient(145deg, #4a4a4a, #2d2d2d);
+        color: #ffffff;
+        transform: scale(1);
+        box-shadow:
+            2px 2px 0px #000,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.3),
+            inset -1px -1px 0px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Animasi Panah Kiri - Biru dengan Flash Putih */
+@keyframes leftPress {
+    0% {
+        background: linear-gradient(145deg, #4a4a4a, #2d2d2d);
+        transform: scale(1);
+    }
+
+    15% {
+        background: linear-gradient(145deg, #ffffff, #f0f0f0);
+        color: #000000;
+        transform: scale(0.95);
+        box-shadow:
+            0px 0px 20px #ffffff,
+            2px 2px 0px #000,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.8);
+    }
+
+    50% {
+        background: linear-gradient(145deg, #0066ff, #0044cc);
+        color: #ffffff;
+        transform: scale(0.9) translateX(-4px);
+        box-shadow:
+            4px 0px 0px #000,
+            0px 0px 25px #0066ff,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.5);
+    }
+
+    100% {
+        background: linear-gradient(145deg, #4a4a4a, #2d2d2d);
+        color: #ffffff;
+        transform: scale(1);
+        box-shadow:
+            2px 2px 0px #000,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.3),
+            inset -1px -1px 0px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Animasi Panah Kanan - Ungu dengan Flash Putih */
+@keyframes rightPress {
+    0% {
+        background: linear-gradient(145deg, #4a4a4a, #2d2d2d);
+        transform: scale(1);
+    }
+
+    15% {
+        background: linear-gradient(145deg, #ffffff, #f0f0f0);
+        color: #000000;
+        transform: scale(0.95);
+        box-shadow:
+            0px 0px 20px #ffffff,
+            2px 2px 0px #000,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.8);
+    }
+
+    50% {
+        background: linear-gradient(145deg, #ff00ff, #cc00cc);
+        color: #ffffff;
+        transform: scale(0.9) translateX(4px);
+        box-shadow:
+            -4px 0px 0px #000,
+            0px 0px 25px #ff00ff,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.5);
+    }
+
+    100% {
+        background: linear-gradient(145deg, #4a4a4a, #2d2d2d);
+        color: #ffffff;
+        transform: scale(1);
+        box-shadow:
+            2px 2px 0px #000,
+            inset 1px 1px 0px rgba(255, 255, 255, 0.3),
+            inset -1px -1px 0px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.d-pad-center {
+    width: 60px;
+    height: 60px;
+    margin: 2px;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border: 3px solid;
+    border-color: #2a2a2a #000000 #000000 #2a2a2a;
+    box-shadow:
+        2px 2px 0px #000,
+        inset 1px 1px 0px rgba(255, 255, 255, 0.1); }

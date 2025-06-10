@@ -1,0 +1,243 @@
+/* Container untuk tombol di kanan atas */
+.pixel-buttons-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+}
+
+/* Base pixel button styling */
+.pixel-btn {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.15s ease;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Pixel border effect */
+.pixel-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background:
+        linear-gradient(90deg, #000 50%, transparent 50%),
+        linear-gradient(0deg, #000 50%, transparent 50%);
+    background-size: 2px 2px, 2px 2px;
+    z-index: -1;
+}
+
+/* Back Button */
+.back-btn {
+    background:
+        linear-gradient(135deg, #ff4757 0%, #ff3742 50%, #ff2837 100%);
+    color: white;
+    text-shadow: 1px 1px 0px #000;
+    box-shadow:
+        inset 2px 2px 0px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 0px rgba(0, 0, 0, 0.4),
+        0px 3px 0px #c44569,
+        0px 6px 0px #a5395a,
+        0px 9px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn:hover {
+    transform: translateY(1px);
+    box-shadow:
+        inset 2px 2px 0px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 0px rgba(0, 0, 0, 0.4),
+        0px 2px 0px #c44569,
+        0px 5px 0px #a5395a,
+        0px 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn:active {
+    transform: translateY(3px);
+    box-shadow:
+        inset 2px 2px 0px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 0px rgba(0, 0, 0, 0.4),
+        0px 0px 0px #c44569,
+        0px 3px 0px #a5395a,
+        0px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Music Button */
+.music-btn {
+    background:
+        linear-gradient(135deg, #5352ed 0%, #4742ed 50%, #3c37ed 100%);
+    color: white;
+    text-shadow: 1px 1px 0px #000;
+    box-shadow:
+        inset 2px 2px 0px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 0px rgba(0, 0, 0, 0.4),
+        0px 3px 0px #4834d4,
+        0px 6px 0px #3d2db7,
+        0px 9px 15px rgba(0, 0, 0, 0.3);
+}
+
+.music-btn:hover {
+    transform: translateY(1px);
+    box-shadow:
+        inset 2px 2px 0px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 0px rgba(0, 0, 0, 0.4),
+        0px 2px 0px #4834d4,
+        0px 5px 0px #3d2db7,
+        0px 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.music-btn:active {
+    transform: translateY(3px);
+    box-shadow:
+        inset 2px 2px 0px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 0px rgba(0, 0, 0, 0.4),
+        0px 0px 0px #4834d4,
+        0px 3px 0px #3d2db7,
+        0px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Pixel Back Icon */
+.back-icon {
+    width: 20px;
+    height: 20px;
+    background:
+        radial-gradient(circle at 30% 50%, white 2px, transparent 2px),
+        radial-gradient(circle at 50% 30%, white 2px, transparent 2px),
+        radial-gradient(circle at 50% 70%, white 2px, transparent 2px),
+        radial-gradient(circle at 70% 50%, white 2px, transparent 2px);
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 0, 4px 8px, 8px 4px;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.back-icon::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 2px;
+    width: 12px;
+    height: 4px;
+    background:
+        linear-gradient(90deg,
+            white 0%, white 25%,
+            transparent 25%, transparent 75%,
+            white 75%, white 100%);
+    background-size: 4px 4px;
+}
+
+.back-icon::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    width: 8px;
+    height: 8px;
+    background:
+        linear-gradient(45deg,
+            white 0%, white 30%,
+            transparent 30%, transparent 70%,
+            white 70%, white 100%);
+    background-size: 4px 4px;
+    transform: rotate(-45deg);
+}
+
+/* Pixel Music Icon */
+.music-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.music-icon::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 3px;
+    height: 12px;
+    background: white;
+    box-shadow:
+        3px 0 0 white,
+        0 -2px 0 white,
+        3px -2px 0 white,
+        6px -2px 0 white;
+}
+
+.music-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 4px;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 6px 0 0 white;
+}
+
+/* Glow effect saat hover */
+.pixel-btn:hover {
+    filter: brightness(1.15) saturate(1.2);
+}
+
+/* Animasi pixel glitch effect */
+@keyframes pixelGlitch {
+    0% {
+        transform: translateY(0);
+    }
+
+    10% {
+        transform: translateY(-1px) translateX(1px);
+    }
+
+    20% {
+        transform: translateY(1px) translateX(-1px);
+    }
+
+    30% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.pixel-btn:active {
+    animation: pixelGlitch 0.3s ease-in-out;
+}
+
+/* Responsive untuk mobile */
+@media (max-width: 768px) {
+    .pixel-buttons-container {
+        top: 15px;
+        right: 15px;
+        gap: 10px;
+    }
+
+    .pixel-btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    .back-icon,
+    .music-icon {
+        width: 16px;
+        height: 16px;
+    }
+}

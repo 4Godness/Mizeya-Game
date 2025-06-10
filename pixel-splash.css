@@ -1,0 +1,386 @@
+/* Import Google Font untuk pixel effect */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Reset untuk memastikan full screen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Main splash screen container */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-family: 'Press Start 2P', monospace;
+    overflow: hidden;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Fade animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.splash-screen.fade-out {
+    animation: fadeOut 1s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Pixel background pattern */
+.splash-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: pixelMove 20s linear infinite;
+}
+
+@keyframes pixelMove {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(20px, 20px);
+    }
+}
+
+/* Welcome text container */
+.welcome-text {
+    text-align: center;
+    color: #00ff88;
+    text-shadow:
+        0 0 5px #00ff88,
+        0 0 10px #00ff88,
+        0 0 15px #00ff88,
+        2px 2px 0px #008844;
+    animation: pixelGlow 2s ease-in-out infinite alternate;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Main title text */
+.main-text {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    margin-bottom: 10px;
+    animation: typewriter 3s steps(40) 1s both;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #00ff88;
+}
+
+/* Subtitle text */
+.sub-text {
+    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+    animation: typewriter 3s steps(40) 2s both;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #00ff88;
+}
+
+/* Typewriter effect */
+@keyframes typewriter {
+    0% {
+        width: 0;
+    }
+
+    90% {
+        border-right: 3px solid #00ff88;
+    }
+
+    100% {
+        width: 100%;
+        border-right: none;
+    }
+}
+
+/* Glow effect animation */
+@keyframes pixelGlow {
+    0% {
+        text-shadow:
+            0 0 5px #00ff88,
+            0 0 10px #00ff88,
+            0 0 15px #00ff88,
+            2px 2px 0px #008844;
+    }
+
+    100% {
+        text-shadow:
+            0 0 10px #00ff88,
+            0 0 20px #00ff88,
+            0 0 30px #00ff88,
+            2px 2px 0px #008844,
+            0 0 40px #00ffaa;
+    }
+}
+
+/* Pixel decorations */
+.pixel-decoration {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #00ff88;
+    animation: pixelFloat 3s ease-in-out infinite;
+    z-index: 5;
+}
+
+.pixel-decoration:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.pixel-decoration:nth-child(2) {
+    top: 30%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.pixel-decoration:nth-child(3) {
+    bottom: 25%;
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.pixel-decoration:nth-child(4) {
+    bottom: 35%;
+    right: 10%;
+    animation-delay: 0.5s;
+}
+
+/* Floating animation for decorations */
+@keyframes pixelFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 1;
+        box-shadow: 0 0 15px #00ff88;
+    }
+}
+
+/* Loading section */
+.loading-container {
+    margin-top: 40px;
+    width: 300px;
+    max-width: 80vw;
+    z-index: 10;
+    position: relative;
+}
+
+.loading-text {
+    font-size: 0.8rem;
+    color: #00ff88;
+    margin-bottom: 10px;
+    animation: blink 1s infinite;
+}
+
+/* Blinking animation */
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0.3;
+    }
+}
+
+/* Loading bar container */
+.loading-bar {
+    width: 100%;
+    height: 12px;
+    background-color: #1a1a2e;
+    border: 2px solid #00ff88;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Loading bar fill */
+.loading-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff88, #00ffaa, #00ff88);
+    width: 0%;
+    animation: loadingProgress 4s ease-in-out infinite;
+    position: relative;
+}
+
+/* Pixel scan effect on loading bar */
+.loading-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+    linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, 0.3) 50%);
+    background-size: 8px 100%;
+    animation: pixelScan 0.5s linear infinite;
+}
+
+/* Loading progress animation */
+@keyframes loadingProgress {
+    0% {
+        width: 0%;
+    }
+
+    70% {
+        width: 100%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+/* Scanning effect */
+@keyframes pixelScan {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Floating particles */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #00ff88;
+    animation: particleFloat 6s linear infinite;
+    z-index: 1;
+}
+
+.particle.odd {
+    background-color: #ff0088;
+}
+
+/* Particle floating animation */
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .loading-container {
+        width: 250px;
+        max-width: 90vw;
+    }
+
+    .pixel-decoration {
+        width: 6px;
+        height: 6px;
+    }
+
+    .main-text {
+        font-size: clamp(1rem, 3.5vw, 2rem);
+    }
+
+    .sub-text {
+        font-size: clamp(0.7rem, 2vw, 1.2rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .loading-container {
+        width: 200px;
+        max-width: 95vw;
+    }
+
+    .pixel-decoration {
+        width: 4px;
+        height: 4px;
+    }
+
+    .loading-text {
+        font-size: 0.7rem;
+    }
+}
+
+/* Tambahan untuk memastikan tidak ada scroll */
+@media (max-height: 600px) {
+    .welcome-text {
+        margin-bottom: 15px;
+    }
+
+    .loading-container {
+        margin-top: 20px;
+    }
+
+    .main-text {
+        font-size: clamp(0.9rem, 3vw, 1.8rem);
+        margin-bottom: 8px;
+    }
+
+    .sub-text {
+        font-size: clamp(0.6rem, 2vw, 1rem);
+    }
+}

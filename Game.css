@@ -1,0 +1,748 @@
+/* Game.css - CSS khusus untuk Life Simulation Game */
+
+/* Container Utama */
+.game-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* Background image */
+  background-image: url('../src/Aset Images/background.jpg');
+  /* Fixed path casing */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Dark Mode */
+.game-container.dark-mode {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  /* Background untuk dark mode */
+  background-image: url('../src/Aset Images/dark-background.jpg');
+  /* Fixed path casing */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+}
+
+/* Header baru */
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  background: none !important;
+  color: inherit !important;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.game-header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  order: 2;
+  flex: 1;
+  min-width: 200px;
+}
+
+.game-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  order: 3;
+}
+
+.player-name-display {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.dark-mode .player-name-display {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.back-btn {
+  order: 1;
+  padding: 0.5rem 1rem;
+  background: rgba(75, 72, 52, 0.797);
+  border: 1px solid #8a7733;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.dark-mode-btn {
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .game-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .game-header-center {
+    order: 1;
+    width: 100%;
+  }
+
+  .back-btn {
+    order: 2;
+    align-self: flex-start;
+  }
+
+  .game-header-right {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+
+  /* Adjust panels for mobile */
+  .game-status-panel {
+    position: static;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .game-controls-panel {
+    position: fixed;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .game-bottom-bar {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    align-items: center;
+  }
+
+  .activities-bar {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .player-vehicle {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-header-title {
+    font-size: 1.5rem;
+  }
+
+  .game-header-time {
+    font-size: 1rem;
+  }
+
+  .player-name-display {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .activity-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .inventory-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Status Panel - Kiri Atas */
+.game-status-panel {
+  position: relative;
+  top: 1rem;
+  left: 1rem;
+  z-index: 20;
+  width: 150px;
+}
+
+.game-panel-mini-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  color: #374151;
+}
+
+.dark-mode .game-panel-mini-title {
+  color: #f3f4f6;
+}
+
+.game-status-mini {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.status-mini-label {
+  font-size: 0.7rem;
+  color: #6b7280;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dark-mode .status-mini-label {
+  color: #9ca3af;
+}
+
+.status-mini-bar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 0.2rem;
+}
+
+.dark-mode .status-mini-bar {
+  background: #374151;
+}
+
+.status-mini-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.status-mini-value {
+  font-size: 0.7rem;
+  color: #4b5563;
+}
+
+.dark-mode .status-mini-value {
+  color: #9ca3af;
+}
+
+/* Game Controls - Kiri Bawah (Hanya Visual) */
+.game-controls-panel {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 20;
+}
+
+.d-pad-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.d-pad-middle {
+  display: flex;
+  gap: 0;
+}
+
+.d-pad-btn {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.d-pad-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.d-pad-btn.active {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0.95);
+}
+
+.d-pad-center {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Dark mode adjustments */
+.dark-mode .d-pad-btn {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .d-pad-btn:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .d-pad-btn.active {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.character-status {
+  font-size: 1.1rem;
+  color: #374151;
+  margin: 0;
+  font-weight: 500;
+}
+
+.dark-mode .character-status {
+  color: #f3f4f6;
+}
+
+/* Bottom Action Bar */
+.game-bottom-bar {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  z-index: 50;
+}
+
+/* Activities Bar */
+.activities-bar {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .activities-bar {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.activity-btn {
+  padding: 0.75rem;
+  background: rgba(59, 130, 246, 0.8);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-btn:hover {
+  background: rgba(37, 99, 235, 0.9);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.dark-mode .activity-btn {
+  background: rgba(59, 130, 246, 0.7);
+}
+
+.dark-mode .activity-btn:hover {
+  background: rgba(37, 99, 235, 0.8);
+}
+
+/* Inventory Button */
+.inventory-btn {
+  padding: 0.75rem 1rem;
+  background: rgba(94, 76, 48, 0.9);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.inventory-btn:hover {
+  background: rgba(165, 149, 131, 0.9);
+  transform: translateY(-1px);
+}
+
+.dark-mode .inventory-btn {
+  background: rgba(185, 140, 85, 0.8);
+}
+
+.dark-mode .inventory-btn:hover {
+  background: rgba(150, 126, 5, 0.8);
+}
+
+/* Game Message */
+.game-message {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e40af;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #3b82f6;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .game-message {
+  background: rgba(96, 165, 250, 0.2);
+  color: #93c5fd;
+  border-color: #60a5fa;
+}
+
+/* Inventory Modal Overlay */
+.inventory-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+  pointer-events: auto;
+}
+
+/* Inventory Modal Content */
+.inventory-modal-content {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 1rem 1.5rem;
+}
+
+.dark-mode .inventory-modal-content {
+  background: #1f2937;
+  color: #f3f4f6;
+}
+
+/* Modal Header */
+.inventory-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dark-mode .inventory-modal-header {
+  border-bottom-color: #374151;
+}
+
+/* Close Button */
+.inventory-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.inventory-close-btn:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.dark-mode .inventory-close-btn {
+  color: #9ca3af;
+}
+
+.dark-mode .inventory-close-btn:hover {
+  background: #374151;
+  color: #f3f4f6;
+}
+
+/* Modal Body */
+.inventory-modal-body {
+  padding: 1rem 0;
+}
+
+/* Inventory Item */
+.inventory-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.inventory-item:hover {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .inventory-item {
+  background: rgba(55, 65, 81, 0.5);
+  border-color: #4b5563;
+}
+
+.dark-mode .inventory-item:hover {
+  background: rgba(55, 65, 81, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Titik Interaktif Pulau */
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  /* Beri ruang untuk header */
+  pointer-events: none;
+  z-index: 100;
+  margin-top: 60px;
+}
+
+/* Adjust game content */
+.game-content {
+  position: relative;
+  height: calc(100vh - 120px);
+  /* Sesuaikan dengan tinggi header dan bottom bar */
+  overflow: hidden;
+}
+
+/* Reposition status panel */
+.game-status-panel {
+  position: absolute;
+  top: 80px;
+  left: 1rem;
+  z-index: 20;
+  width: 150px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .game-status-panel {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.map-point {
+  position: absolute;
+  cursor: pointer;
+  pointer-events: auto;
+  font-size: 1.5rem;
+  transition: transform 0.2s;
+  text-shadow: 1px 1px 2px black;
+}
+
+.map-point:hover {
+  transform: scale(1.3);
+  filter: brightness(1.3);
+}
+
+.dark-mode .map-point {
+  text-shadow: 1px 1px 2px white;
+}
+
+
+/* Inventory Item Name */
+.inventory-item-name {
+  font-size: 1rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.dark-mode .inventory-item-name {
+  color: #e5e7eb;
+}
+
+/* Inventory Item Quantity */
+.inventory-item-quantity {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-right: 1rem;
+}
+
+.dark-mode .inventory-item-quantity {
+  color: #9ca3af;
+}
+
+/* Inventory Use Button */
+.inventory-use-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.inventory-use-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.player-vehicle {
+  position: absolute;
+  top: 75%;
+  left: 60%;
+  width: 60px;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Animasi melayang */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(-5px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-status-panel {
+    position: fixed;
+    top: auto;
+    bottom: 12rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 300px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .dark-mode .game-status-panel {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .game-status-mini {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-mini-label {
+    min-width: 70px;
+    font-size: 0.65rem;
+  }
+
+  .status-mini-bar {
+    flex: 1;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-status-panel {
+    bottom: 14rem;
+    padding: 0.3rem;
+  }
+
+  .game-status-mini {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .status-mini-label {
+    width: 100%;
+    font-size: 0.6rem;
+  }
+
+  .status-mini-bar {
+    width: 100%;
+  }
+}
+
+/* Game Controls Panel Responsive */
+@media (max-width: 768px) {
+  .game-controls-panel {
+    position: fixed;
+    bottom: 8rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .game-bottom-bar {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
